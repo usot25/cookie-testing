@@ -1,150 +1,204 @@
-:root {
-    --max-width: 1100px;
-    --space: 16px;
-    --muted: #444;
-    --text: #000;
-    --bg: #fff
+:root{
+  --max-width:1100px;
+  --space:16px;
+  --muted:#444;
+  --text:#000;
+  --bg:#fff;
+  --container-gap:1.125rem; /* 18px */
+  --brand-size:clamp(1rem, 2.2vw, 1.25rem); /* responsive brand size */
+  --h1-size:clamp(1.5rem, 3.6vw, 2rem);
+  --h2-size:clamp(1.125rem, 2.6vw, 1.25rem);
+  --base:clamp(0.95rem, 1.6vw, 1rem);
 }
 
-* {
-    box-sizing: border-box
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  font-size: var(--base);
+  line-height:1.45;
+  -webkit-tap-highlight-color: transparent;
 }
 
-html,
-body {
-    height: 100%
+.wrap{
+  max-width:var(--max-width);
+  margin:28px auto;
+  padding:0 var(--space);
+  width:100%;
 }
 
-body {
-    margin: 0;
-    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-    background: var(--bg);
-    color: var(--text);
-    -webkit-font-smoothing: antialiased
+/* Header */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:22px;
+  flex-wrap:wrap; /* allow wrapping on narrow devices */
 }
 
-.wrap {
-    max-width: var(--max-width);
-    margin: 28px auto;
-    padding: 0 var(--space)
+.brand{
+  font-weight:800;
+  letter-spacing:0.6px;
+  font-size:var(--brand-size);
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 22px
+/* Navigation structure */
+.main-nav{
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
-.brand {
-    font-weight: 800;
-    letter-spacing: 0.6px;
-    font-size: 20px
+/* nav links wrapper for easier show/hide */
+.nav-links{
+  display:flex;
+  gap:12px;
+  align-items:center;
 }
 
-nav a {
-    margin-left: 12px;
-    font-size: 14px;
-    color: var(--muted);
-    text-decoration: none
+nav a{
+  font-size:0.875rem;
+  color:var(--muted);
+  text-decoration:none;
+  padding:8px 6px; /* larger tap targets */
+  border-radius:6px;
 }
 
-nav a:hover {
-    text-decoration: underline
+nav a:focus,
+nav a:hover{
+  text-decoration:underline;
+  outline: none;
 }
 
-.container {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 18px
+/* hamburger toggle */
+.nav-toggle{
+  display:none; /* made visible at smaller breakpoints */
+  color:var(--muted);
+  cursor:pointer;
+  font-size:1.2rem;
+  padding:6px;
+  border-radius:6px;
 }
 
-.hero {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 18px;
-    margin-bottom: 18px
+/* Main content */
+.container{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:var(--container-gap);
 }
 
-.hero h1 {
-    font-size: 24px;
-    margin: 8px 0
+.hero{
+  border-bottom:1px solid #eee;
+  padding-bottom:18px;
+  margin-bottom:18px;
 }
 
-.byline {
-    color: var(--muted);
-    font-size: 13px
+.hero h1{
+  font-size:var(--h1-size);
+  margin:8px 0;
 }
 
-.article h2 {
-    font-size: 20px;
-    margin: 8px 0
+.byline{
+  color:var(--muted);
+  font-size:0.9rem;
 }
 
-.quote {
-    font-style: italic;
-    border-left: 3px solid #000;
-    padding-left: 12px;
-    margin: 12px 0;
-    font-size: 18px
+/* Articles */
+.article h2{
+  font-size:var(--h2-size);
+  margin:8px 0;
 }
 
-.meaning {
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.5
+.quote{
+  font-style:italic;
+  border-left:3px solid #000;
+  padding-left:12px;
+  margin:12px 0;
+  font-size:1.125rem;
 }
 
-.side {
-    font-size: 14px;
-    color: var(--muted)
+.meaning{
+  color:var(--muted);
+  font-size:0.95rem;
+  line-height:1.6;
 }
 
-.side .list a {
-    display: block;
-    padding: 8px 0;
-    border-bottom: 1px dashed #eee;
-    color: inherit;
-    text-decoration: none
+/* Side */
+.side{
+  font-size:0.95rem;
+  color:var(--muted);
 }
 
-footer {
-    margin-top: 30px;
-    color: var(--muted);
-    font-size: 13px;
-    padding-bottom: 40px
+.side .list a{
+  display:block;
+  padding:10px 0;
+  border-bottom:1px dashed #eee;
+  color:inherit;
+  text-decoration:none;
 }
 
-/* Responsive */
-@media (max-width:900px) {
-    .container {
-        grid-template-columns: 1fr
-    }
-
-    nav a {
-        display: none
-    }
-
-    .nav-toggle {
-        display: inline-block
-    }
+/* Footer */
+footer{
+  margin-top:30px;
+  color:var(--muted);
+  font-size:0.9rem;
+  padding-bottom:40px;
 }
 
-.nav-toggle {
-    display: none;
-    color: var(--muted);
-    cursor: pointer
+/* Small screens */
+@media (max-width:900px){
+  .container{
+    grid-template-columns:1fr;
+  }
+
+  /* show hamburger */
+  .nav-toggle{ display:inline-block; }
+
+  /* hide the inline links by default; they will be shown when nav-open class is present */
+  .nav-links{
+    display:none;
+    position:absolute;
+    right:var(--space);
+    top:64px; /* below header */
+    background:var(--bg);
+    border:1px solid #eee;
+    padding:8px;
+    border-radius:8px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    flex-direction:column;
+    min-width:180px;
+    z-index:100;
+  }
+
+  /* when nav is open (toggle JS adds class to navLinks) */
+  .nav-links.nav-open{
+    display:flex;
+  }
 }
 
-/* Utility */
-.kicker {
-    font-size: 12px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px
+/* Very small phones: tighten spacing and font sizes */
+@media (max-width:420px){
+  .wrap{ padding:0 12px; margin:20px auto; }
+  header{ margin-bottom:16px; }
+  .brand{ font-size:1rem; }
+  .hero h1{ font-size:1.25rem; }
+  .quote{ font-size:1rem; padding-left:10px; border-left-width:2px; }
+  nav a{ padding:10px 8px; font-size:0.95rem; }
+  .side .list a{ padding:8px 0; }
 }
 
-.small {
-    font-size: 13px;
-    color: var(--muted)
+/* Accessibility focus style */
+a:focus,
+.nav-toggle:focus{
+  outline:2px solid rgba(0,0,0,0.12);
+  outline-offset:2px;
 }
+
+/* Utility classes (unchanged) */
+.kicker{ font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+.small{ font-size:13px; color:var(--muted); }
